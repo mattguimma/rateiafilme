@@ -3,20 +3,33 @@ body{
     align-items: center;
     justify-content: center;
     height: 100vh;
-    display: flex;
     color: white;
+}
+
+#session-message{
+    display: none;
+    padding: 10px 30px;
+    margin: 20px;
+    background-color: #a80cb6;
+    border-radius: 25px;
+}
+
+#sc-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 .logo{
     height: 14%;
-    margin-right: 30px;
     width: auto;
     top: 0%;
 }
 
-form{
+#form-login{
     display: flex;
-    flex-direction: column;
     align-items: center;
 }
 
