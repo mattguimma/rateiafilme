@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -25,7 +27,7 @@
             <a href="register.php"> <button class="btlogin">Registro</button> </a>
 
             <a href="https://github.com/mattguimma" class="gitlink"> 
-                    Projetado por Mattheus Guimarães 
+                Projetado por Mattheus Guimarães 
             </a>
         </div>
     </div>

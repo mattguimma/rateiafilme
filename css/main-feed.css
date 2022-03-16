@@ -1,5 +1,3 @@
-/* barra de navegação */
-
 body{
     background-color: rgba(10, 10, 10);
 }
@@ -8,18 +6,20 @@ body{
 
 #showcase {
     width: 100%;
-    height: 90vh;
     justify-content: center;
     align-items: center;
 }
 
 #popularmovies{
+    padding: 5vh 0;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.popm{
-    display: flex;
+.popmtitle{
+    align-items: center;
     color:white;
 }
 
@@ -35,7 +35,7 @@ body{
 }
 
 .poster{
-    background-color:rebeccapurple;
+    background-color:darkolivegreen;
     height: 250px;
     width: 166px;
 }

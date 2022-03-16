@@ -26,7 +26,7 @@
         <img class="logo" src="./images/logo.png" alt="">
 
         <div id="form-register">
-            <form method="POST" action="./php/input-register.php">
+            <form method="POST" action="./scripts/input-register.php">
                 <label for = "username">
                     <span>Nome de usuário</span>
                     <input type="username" name="username" class="form-control" required autofocus>

@@ -1,3 +1,9 @@
+<?php session_start();
+    if(!isset($_SESSION['username'])){
+        header("Location: index.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -16,7 +22,7 @@
             <img src="./images/logo.png" alt="" class="logo">
             <div id="userarea">
                 <i class="fa-solid fa-circle-plus"></i>
-                <span class="username">Username</span>
+                <span class="username"><?php echo $_SESSION['username']?></span>
                 <img src="./images/user.jpg" alt="" class="userimage">
                 <br>
             </div>
@@ -25,7 +31,7 @@
 
     <div id="showcase">
         <div id="popularmovies">
-            <h1 class="popm">Filmes mais populares</h1>
+            <h1 class="popmtitle">Filmes mais populares</h1>
             <div id="moviesgrid">
                 <div class="poster"></div>
                 <div class="poster"></div>

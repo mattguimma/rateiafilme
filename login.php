@@ -26,7 +26,7 @@
         <img class="logo" src="./images/logo.png" alt="">
 
         <div id="form-login">
-            <form method="POST" action="./php/input-user.php">
+            <form method="POST" action="./scripts/input-user.php">
                 <label for = "email">
                     <span>Email</span>
                     <input type="email" name="email" class="form-control" placeholder="exemplo@exemplo.com" required autofocus>
