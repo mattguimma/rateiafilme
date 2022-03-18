@@ -29,7 +29,7 @@
             <form method="POST" action="./scripts/input-register.php">
                 <label for = "username">
                     <span>Nome de usuário</span>
-                    <input type="username" name="username" class="form-control" required autofocus>
+                    <input type="username" name="username" class="form-control" maxlength="15" required autofocus>
                 </label>
                 
                 <label for = "email">

@@ -24,7 +24,7 @@
             <img src="./images/logo.png" alt="" class="logo">
             <div id="userarea">
                 <i class="fa-solid fa-circle-plus"></i>
-                <span class="username">Username</span>
+                <span class="username"><?php echo $_SESSION['username']?></span>
                 <img src="./images/user.jpg" alt="" class="userimage">
                 <br>
             </div>
