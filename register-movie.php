@@ -1,8 +1,8 @@
 <?php session_start();
     
-    if(!isset($_SESSION['username'])){
-        header("Location: index.php");
-    }
+    //if(!isset($_SESSION['username'])){
+    //    header("Location: index.php");
+    //}
     
 ?>
 
@@ -41,34 +41,47 @@
                 }
             ?>
         </div>
-
         <div id="form-regmovie">
             <form method="POST" action="./scripts/input-movie.php" enctype="multipart/form-data">
-                <label for = "movietitle">
-                    <span>Título do filme</span>
-                    <input type="movietitle" name="movietitle" class="form-control" required autofocus>
-                </label>
-                
-                <label for = "moviedir">
-                    <span>Diretor</span>
-                    <input type="moviedir" name="moviedir" class="form-control" required autofocus>
-                </label>
+                <div id="formright">
+                    <label for = "movieposter">
+                        <span>Poster do filme</span>
+                        <input type="file" name="movieposter" class="form-control" required autofocus>
+                        <p>Resolução mínima: 600x380 <br> Use JPG, JPEG ou PNG</p>
+                    </label>
 
-                <label for = "movieyear">
-                    <span>Ano de lançamento</span>
-                    <input type="movieyear" name="movieyear" class="form-control" onkeypress="return onlynumber();" required>
-                </label>
-                
-                <label for = "moviesip">
-                    <span>Sinopse</span>
-                    <input type="moviesip" name="moviesip" class="form-control" required>
-                </label>
+                    <div id="demoposter">
+                        <img src="" alt="" class="posterimg">
+                    </div>
+                </div>
 
-                <label for = "movieyt">
-                    <span>Trailer</span>
-                    <input type="movieyt" name="movieyt" class="form-control" required>
-                </label>
-                <button type="submit">Registrar filme</button>
+                <div id="formleft">
+                    <label for = "movietitle">
+                        <span>Título do filme</span>
+                        <input type="movietitle" name="movietitle" class="form-control" required autofocus>
+                    </label>
+                    
+                    <label for = "moviedir">
+                        <span>Diretor</span>
+                        <input type="moviedir" name="moviedir" class="form-control" required autofocus>
+                    </label>
+
+                    <label for = "movieyear">
+                        <span>Ano de lançamento</span>
+                        <input type="movieyear" name="movieyear" class="form-control" onkeypress="return onlynumber();" required>
+                    </label>
+                    
+                    <label for = "moviesip">
+                        <span>Sinopse</span>
+                        <input type="moviesip" name="moviesip" class="form-control" required>
+                    </label>
+
+                    <label for = "movieyt">
+                        <span>Trailer</span>
+                        <input type="movieyt" name="movieyt" class="form-control">
+                    </label>
+                    <button type="submit">Registrar filme</button>
+                </div>
             </form>
         </div>
     </div>

@@ -1,4 +1,4 @@
-body{
+body {
     background-color: rgba(10, 10, 10);
     align-items: center;
     justify-content: center;
@@ -6,7 +6,7 @@ body{
     color: white;
 }
 
-#session-message{
+#session-message {
     display: none;
     padding: 10px 30px;
     margin: 20px;
@@ -14,7 +14,7 @@ body{
     border-radius: 25px;
 }
 
-#sc-content{
+#sc-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -22,28 +22,30 @@ body{
     height: 100vh;
 }
 
-.logo{
+.logo {
     height: 14%;
     width: auto;
     top: 0%;
 }
 
-#form-login{
+#form-login {
     display: flex;
     align-items: center;
 }
 
-form label{
+form label {
     display: flex;
     flex-direction: column;
 }
 
-form label span{
+form label span {
     font-size: 1.1rem;
     margin-top: 2rem;
 }
 
-form input, button{
+form input,
+button {
+    color: white;
     font-family: 'Poppins', sans-serif;
     background: #161923;
     width: 300px;
@@ -60,7 +62,7 @@ button {
     font-family: 'Poppins', sans-serif;
     background: #a80cb6;
     font-size: 0.85rem;
-    color:black;
+    color: black;
     text-transform: uppercase;
     padding: 15px 60px;
     border: none;
@@ -73,6 +75,6 @@ button {
 
 button:hover {
     background: #8a0796;
-    color:whitesmoke;
+    color: whitesmoke;
     cursor: pointer;
 }
