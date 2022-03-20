@@ -1,8 +1,8 @@
 <?php session_start();
     
-    //if(!isset($_SESSION['username'])){
-    //    header("Location: index.php");
-    //}
+    if(!isset($_SESSION['username'])){
+        header("Location: index.php");
+    }
     
 ?>
 
@@ -21,7 +21,7 @@
 <body>
 <navbar id="navbar">
         <div class="navbar-container">
-            <img src="./images/logo.png" alt="" class="logo">
+            <a href="main-feed.php"><img src="./images/logo.png" alt="" class="logo"></a>
             <div id="userarea">
                 <i class="fa-solid fa-circle-plus"></i>
                 <span class="username"><?php echo $_SESSION['username']?></span>
@@ -32,30 +32,33 @@
     </navbar>
 
     <div id="showcase">
-        <div id="session-message">
-            <?php
-                if (isset($_SESSION['failedregister'])) 
-                {
-                echo $_SESSION['failedregister'];
-                unset($_SESSION['failedregister']);
-                }
-            ?>
-        </div>
         <div id="form-regmovie">
             <form method="POST" action="./scripts/input-movie.php" enctype="multipart/form-data">
                 <div id="formright">
                     <label for = "movieposter">
                         <span>Poster do filme</span>
-                        <input type="file" name="movieposter" class="form-control" required autofocus>
-                        <p>Resolução mínima: 600x380 <br> Use JPG, JPEG ou PNG</p>
+                        <input type="file" name="movieposter" class="movieformposter" required autofocus>
                     </label>
 
                     <div id="demoposter">
                         <img src="" alt="" class="posterimg">
                     </div>
+                    
+                    <p>Resolução mínima: 600x380 <br> Use JPG, JPEG ou PNG</p>
                 </div>
 
                 <div id="formleft">
+                    <div id="session-message">
+                        <?php
+                            if (isset($_SESSION['failedregister'])) 
+                            {
+                            echo $_SESSION['failedregister'];
+                            unset($_SESSION['failedregister']);
+                            }
+                        ?>
+                    </div>
+
+
                     <label for = "movietitle">
                         <span>Título do filme</span>
                         <input type="movietitle" name="movietitle" class="form-control" required autofocus>

@@ -21,7 +21,7 @@
 <body>
     <navbar id="navbar">
         <div class="navbar-container">
-            <img src="./images/logo.png" alt="" class="logo">
+            <a href="main-feed.php"><img src="./images/logo.png" alt="" class="logo"></a>
             <div id="userarea">
                 <i class="fa-solid fa-circle-plus"></i>
                 <span class="username"><?php echo $_SESSION['username']?></span>
