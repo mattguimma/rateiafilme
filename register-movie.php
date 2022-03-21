@@ -50,10 +50,10 @@
                 <div id="formleft">
                     <div id="session-message">
                         <?php
-                            if (isset($_SESSION['failedregister'])) 
+                            if (isset($_SESSION['failedmovieregister'])) 
                             {
-                            echo $_SESSION['failedregister'];
-                            unset($_SESSION['failedregister']);
+                            echo $_SESSION['failedmovieregister'];
+                            unset($_SESSION['failedmovieregister']);
                             }
                         ?>
                     </div>
