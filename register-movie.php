@@ -58,7 +58,6 @@
                         ?>
                     </div>
 
-
                     <label for = "movietitle">
                         <span>Título do filme</span>
                         <input type="movietitle" name="movietitle" class="form-control" required autofocus>

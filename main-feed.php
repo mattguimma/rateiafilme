@@ -23,7 +23,7 @@
             <div id="userarea">
                 <i class="fa-solid fa-circle-plus"></i>
                 <span class="username"><?php echo $_SESSION['username']?></span>
-                <img src="./images/user.jpg" alt="" class="userimage">
+                <img src="<?php echo $_SESSION['userpic']?>" alt="" class="userimage">
                 <br>
             </div>
         </div>

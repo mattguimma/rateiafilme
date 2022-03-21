@@ -33,14 +33,15 @@ $returnquery = mysqli_query($conn, $registerquery);
 
 if (mysqli_insert_id($conn))
 {
-    echo "<script> alert('Filme salvo no banco de dados com sucesso...!') </script>";
+    echo "<script> alert('Filme salvo no banco de dados com sucesso...!'); </script>";
     header('Location: ../main-feed.php');
 
 }
 
 else if (!mysqli_insert_id($conn))
 {  
-    $_SESSION['failedmovieregister'] = "Erro ao salvar o filme.";
+    $_SESSION['failedmovieregister'] = "<p class='message'>Houve um erro em nosso banco de dados.<br>Tente novamente mais tarde.</p>
+    <script> document.getElementById('session-message').style.display = 'flex'; </script>";
     header("Location: ../register-movie.php");
 }
 

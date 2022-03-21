@@ -7,9 +7,27 @@ $username = filter_input(INPUT_POST, 'username', FILTER_UNSAFE_RAW);
 $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
 $password = filter_input(INPUT_POST, 'password', FILTER_UNSAFE_RAW);
 
+if(isset($_FILES['userpic'])){
+    $profilepic = $_FILES['userpic'];
+    
+    $filepath = "./images/userimages/";
+    $filename = $profilepic['name'];
+    $filenewname = uniqid() . "_" . strtolower(str_replace(' ', '', $username));
+
+    $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+
+    if($ext != "jpg" && $ext != "jpeg" && $ext != "png")
+        $_SESSION['failedregister'] = "Tipo de imagem não aceito!";
+        header("Location: ../register.php");
+
+    $picpath = $filepath . $filenewname . '.' . $ext;
+
+    move_uploaded_file($profilepic['tmp_name'], $picpath);
+}
+
 $password = md5($password);
 
-$registerquery = "INSERT INTO userdata (username, usermail, password) VALUES ('$username', '$email', '$password')";
+$registerquery = "INSERT INTO userdata (username, usermail, password, userpic) VALUES ('$username', '$email', '$password', '$picpath')";
 
 $returnquery = mysqli_query($conn, $registerquery);
 

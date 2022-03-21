@@ -26,6 +26,7 @@ if(empty($exit)){
 
 else if(isset($exit)){
     $_SESSION['username'] = $exit['username'];
+    $_SESSION['userpic'] = $exit['userpic'];
     $_SESSION['userid'] = $exit['id'];
     $_SESSION['logged'] = true;
     header('Location: ../main-feed.php');
