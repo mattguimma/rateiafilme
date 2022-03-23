@@ -1,7 +1,11 @@
-<?php session_start();
+<?php 
+    session_start();
+
     if(!isset($_SESSION['username'])){
         header("Location: index.php");
     }
+
+    include_once("./scripts/connection.php");
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +25,7 @@
         <div class="navbar-container">
             <a href="main-feed.php"><img src="./images/logo.png" alt="" class="logo"></a>
             <div id="userarea">
-                <i class="fa-solid fa-circle-plus"></i>
+                <a href="write-review.php"><i class="fa-solid fa-circle-plus"></i></a>
                 <span class="username"><?php echo $_SESSION['username']?></span>
                 <img src="<?php echo $_SESSION['userpic']?>" alt="" class="userimage">
                 <br>
@@ -33,20 +37,24 @@
         <div id="popularmovies">
             <h1 class="popmtitle">Filmes mais populares</h1>
             <div id="moviesgrid">
-                <div class="poster"></div>
-                <div class="poster"></div>
-                <div class="poster"></div>
-                <div class="poster"></div>
+                <?php
+                    $query = "SELECT * FROM moviedata LIMIT 12";
+                    $v_exit = mysqli_query($conn, $query);
 
-                <div class="poster"></div>
-                <div class="poster"></div>
-                <div class="poster"></div>
-                <div class="poster"></div>
-
-                <div class="poster"></div>
-                <div class="poster"></div>
-                <div class="poster"></div>
-                <div class="poster"></div>
+                    while($rowmovie = mysqli_fetch_assoc($v_exit)){
+                        echo "<div class='poster". $rowmovie['id'] ."'>";
+                        echo "<style> .poster". $rowmovie['id'] ."{ 
+                                background-image: url(". $rowmovie['moviepostercss'] .");
+                                background-size: cover;
+                                border-width: 3px;
+                                border-radius: 5px;
+                                cursor: pointer;
+                                height: 225px;
+                                width: 150px;
+                            } </style>";
+                        echo "</div>";
+                    }
+                ?>
             </div>
         </div>    
     </div>

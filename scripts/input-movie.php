@@ -13,7 +13,7 @@ $movieyt = filter_input(INPUT_POST, 'movieyt', FILTER_UNSAFE_RAW);
 if(isset($_FILES['movieposter'])){
     $poster = $_FILES['movieposter'];
     
-    $filepath = "../images/movieposters/";
+    $filepath = "images/movieposters/";
     $filename = $poster['name'];
     $filenewname = uniqid() . "_" . strtolower(str_replace(' ', '', $movietitle));
 
@@ -23,12 +23,13 @@ if(isset($_FILES['movieposter'])){
         $_SESSION['failedmovieregister'] = "Tipo de imagem não aceito!";
         header("Location: register-movie.php");
 
-    $posterpath = $filepath . $filenewname . '.' . $ext;
+    $posterpath = '../' . $filepath . $filenewname . '.' . $ext;
+    $posterCSSpath = $filepath . $filenewname . '.' . $ext;
 
     move_uploaded_file($poster['tmp_name'], $posterpath);
 }
 
-$registerquery = "INSERT INTO moviedata (usersendedid, moviename, moviedir, moviesinopse, movieyear, movietrailer, movieposter) VALUES ('$userid', '$movietitle', '$moviedir', '$moviesip', '$movieyear', '$movieyt', '$posterpath')";
+$registerquery = "INSERT INTO moviedata (usersendedid, moviename, moviedir, moviesinopse, movieyear, movietrailer, movieposter, moviepostercss) VALUES ('$userid', '$movietitle', '$moviedir', '$moviesip', '$movieyear', '$movieyt', '$posterpath', '$posterCSSpath')";
 $returnquery = mysqli_query($conn, $registerquery);
 
 if (mysqli_insert_id($conn))

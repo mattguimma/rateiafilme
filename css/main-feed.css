@@ -6,12 +6,13 @@ body{
 
 #showcase {
     width: 100%;
+    height: 100vh;
     justify-content: center;
     align-items: center;
 }
 
 #popularmovies{
-    padding: 5vh 0;
+    padding: 33px 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -19,6 +20,8 @@ body{
 }
 
 .popmtitle{
+    text-transform: uppercase;
+    letter-spacing: 1px;
     align-items: center;
     color:white;
 }
@@ -28,14 +31,15 @@ body{
 #moviesgrid{
     display: grid;
     -ms-grid-row-align: center;
-    margin-top: 30px;
+    margin-top: 25px;
     justify-content: center;
     align-items: center;
-    grid: repeat(2, 280px) / auto-flow 200px;
+    grid: repeat(2, 255px) / auto-flow 180px;
 }
 
 .poster{
-    background-color:darkolivegreen;
-    height: 250px;
-    width: 166px;
+    background-color:#a80cb6;
+    border-radius: 5px;
+    height: 225px;
+    width: 150px;
 }
