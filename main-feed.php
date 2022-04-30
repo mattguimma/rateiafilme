@@ -25,7 +25,9 @@
         <div class="navbar-container">
             <a href="main-feed.php"><img src="./images/logo.png" alt="" class="logo"></a>
             <div id="userarea">
-                <a href="write-review.php"><i class="fa-solid fa-circle-plus"></i></a>
+                <a href="register-movie.php"><i class="fa-solid fa-circle-plus"></i></a>
+                <a href="write-review.php"><i class="fa-solid fa-pen-circle"></i></a>
+                <a href="./scripts/logoff.php"><i class="fa-solid fa-circle-xmark"></i></a>
                 <span class="username"><?php echo $_SESSION['username']?></span>
                 <img src="<?php echo $_SESSION['userpic']?>" alt="" class="userimage">
                 <br>
@@ -41,8 +43,10 @@
                     $query = "SELECT * FROM moviedata LIMIT 12";
                     $v_exit = mysqli_query($conn, $query);
 
+                    $i = 1;
+
                     while($rowmovie = mysqli_fetch_assoc($v_exit)){
-                        echo "<div class='poster". $rowmovie['id'] ."'>";
+                        echo "<a class='linkmovie". $i ."' href='movie.php?id=$rowmovie[id]'><div class='poster". $rowmovie['id'] ."'>";
                         echo "<style> .poster". $rowmovie['id'] ."{ 
                                 background-image: url(". $rowmovie['moviepostercss'] .");
                                 background-size: cover;
@@ -52,7 +56,9 @@
                                 height: 225px;
                                 width: 150px;
                             } </style>";
-                        echo "</div>";
+
+                            $i++;
+                        echo "</div></a>";
                     }
                 ?>
             </div>

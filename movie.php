@@ -3,7 +3,16 @@
     if(!isset($_SESSION['username'])){
         header("Location: index.php");
     }
+    include_once("./scripts/connection.php");
     
+    if(!isset($_GET['id'])){
+        header("Location: main-feed.php");
+    }
+
+    $movieid = $_GET['id'];
+    $query = "SELECT * FROM moviedata WHERE id = $movieid";
+    $v_exit = mysqli_query($conn, $query);
+    $sqlmoviedata = mysqli_fetch_assoc($v_exit);
 ?>
 
 <!DOCTYPE html>
@@ -23,9 +32,11 @@
         <div class="navbar-container">
             <a href="main-feed.php"><img src="./images/logo.png" alt="" class="logo"></a>
             <div id="userarea">
-                <i class="fa-solid fa-circle-plus"></i>
+                <a href="write-review.php"><i class="fa-solid fa-circle-plus"></i></a>
+                <a href="./scripts/logoff.php"><i class="fa-solid fa-circle-xmark"></i></a>
+                
                 <span class="username"><?php echo $_SESSION['username']?></span>
-                <img src="./images/user.jpg" alt="" class="userimage">
+                <img src="<?php echo $_SESSION['userpic']?>" alt="" class="userimage">
                 <br>
             </div>
         </div>
@@ -33,17 +44,26 @@
 
     <div id="showcase">
         <div id="sc-landing">
-            <div class="poster"></div>
+            <div class="poster">
+                <style>
+                    .poster{
+                        background-image: url(<?php echo $sqlmoviedata['moviepostercss']?>);
+                        background-size: cover;
+                    }
+                </style>
+            </div>
             <div id="movie-info">
-                <h1 class="title">Movie Title</h1> 
-                <p class="year">2022</p>
-                <p class="directedby">Dirigido por Dir. Name</p>
+                <h1 class="title"><?php echo $sqlmoviedata['moviename']?></h1> 
+                <p class="year"><?php echo $sqlmoviedata['movieyear']?></p>
+                <p class="directedby"><?php echo $sqlmoviedata['moviedir']?></p>
 
                 <div class="synopsis">
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Libero doloribus ipsum, iure tempora quo dicta natus maxime. Error ratione maiores voluptates illo, molestias asperiores quia! Quidem, eos? Vero, possimus deleniti.</p>
+                    <p><?php echo $sqlmoviedata['moviesinopse']?></p>
                 </div>
+
+                <p class="watchon">Watch on</p>
+                <a href="<?php echo $sqlmoviedata['movietrailer']?>"><i class="fa-solid fa-circle-play"> Trailer pelo Youtube </i></a>
             </div>
-        </div>
     </div>
 </body>
 </html>

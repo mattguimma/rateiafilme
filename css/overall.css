@@ -39,7 +39,7 @@ body {
 
 .userimage {
     height: 40px;
-    width: auto;
+    width: 40px;
     cursor: pointer;
     border-radius: 100%;
 }

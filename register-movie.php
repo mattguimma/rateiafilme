@@ -19,13 +19,15 @@
     <title>Rateia Filme - Registrar filme</title>
 </head>
 <body>
-<navbar id="navbar">
+    <navbar id="navbar">
         <div class="navbar-container">
             <a href="main-feed.php"><img src="./images/logo.png" alt="" class="logo"></a>
             <div id="userarea">
-                <i class="fa-solid fa-circle-plus"></i>
+                <a href="write-review.php"><i class="fa-solid fa-circle-plus"></i></a>
+                <a href="./scripts/logoff.php"><i class="fa-solid fa-circle-xmark"></i></a>
+                
                 <span class="username"><?php echo $_SESSION['username']?></span>
-                <img src="./images/user.jpg" alt="" class="userimage">
+                <img src="<?php echo $_SESSION['userpic']?>" alt="" class="userimage">
                 <br>
             </div>
         </div>

@@ -1,12 +1,12 @@
 body{
     background-color: rgba(10, 10, 10);
+    height: 100vh;
 }
 
 /* conteúdo da página */
 
 #showcase {
     width: 100%;
-    height: 100vh;
     justify-content: center;
     align-items: center;
 }
@@ -32,9 +32,10 @@ body{
     display: grid;
     -ms-grid-row-align: center;
     margin-top: 25px;
+    margin-left: 30px;
     justify-content: center;
     align-items: center;
-    grid: repeat(2, 255px) / auto-flow 180px;
+    grid: repeat(2, 250px) / auto-flow 185px;
 }
 
 .poster{

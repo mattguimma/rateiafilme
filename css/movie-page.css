@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
 body {
     color: white;
     background-color: rgba(10, 10, 10);
@@ -6,15 +8,15 @@ body {
 #showcase {
     display: flex;
     width: 100%;
-    height: 90vh;
     justify-content: center;
-    align-items: center;
 }
 
 #sc-landing{
+    margin-left: 10%;
     display: flex;
     justify-content: space-between;
-    width: 80%;
+    width: 90%;
+    margin-top: 20px;
 }
 
 #movie-info{
@@ -24,6 +26,7 @@ body {
 .poster{
     width: 380px;
     height: 600px;
+    border-radius: 10px;
     background-color: brown;
 }
 
@@ -31,7 +34,35 @@ body {
     font-size: 3rem;
 }
 
-#movie-info .synopsis{
+#movie-info .title,.year,.directedby{
+    padding-left: 10px;
+}
+
+#movie-info .synopsis p{
     padding-top: 30px;
-    width: 60%;
+    padding-left: 10px;
+    padding-bottom: 17px;
+    width: 95%;
+}
+
+#movie-info .synopsis{
+    border-bottom: 1px solid white;
+    width: 63%;
+}
+
+#movie-info .watchon{
+    padding-top: 17px;
+    padding-left: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+}
+
+#movie-info i{
+    font-size: 1.5rem;
+    padding-left: 10px;
+}
+
+#movie-info a{
+    color: white;
+    text-decoration: none;
 }
