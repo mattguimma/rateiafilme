@@ -31,13 +31,22 @@
     <navbar id="navbar">
         <div class="navbar-container">
             <a href="main-feed.php"><img src="./images/logo.png" alt="" class="logo"></a>
-            <div id="userarea">
-                <a href="write-review.php"><i class="fa-solid fa-circle-plus"></i></a>
-                <a href="./scripts/logoff.php"><i class="fa-solid fa-circle-xmark"></i></a>
-                
-                <span class="username"><?php echo $_SESSION['username']?></span>
-                <img src="<?php echo $_SESSION['userpic']?>" alt="" class="userimage">
-                <br>
+
+            <div id="rightside">
+                <div id="search">
+                    <form action="search.php" method="GET">
+                        <input type="text" id="searchquery" name="searchquery" placeholder="Pesquisar..."/>
+                        <button type="submit" class="fa-solid fa-magnifying-glass"></button>
+                    </form>
+                </div> 
+
+                <div id="userarea">
+                    <!-- <a href="write-review.php"><i class="fa-solid fa-pen-circle"></i></a>
+                    <a href="register-movie.php"><i class="fa-solid fa-circle-plus"></i></a>
+                    <a href="./scripts/logoff.php"><i class="fa-solid fa-circle-xmark"></i></a> -->
+                    <span class="username"><?php echo $_SESSION['username']?></span>                        
+                    <img src="<?php echo $_SESSION['userpic']?>" alt="" class="userimage">
+                </div>
             </div>
         </div>
     </navbar>
@@ -64,6 +73,13 @@
                 <p class="watchon">Watch on</p>
                 <a href="<?php echo $sqlmoviedata['movietrailer']?>"><i class="fa-solid fa-circle-play"> Trailer pelo Youtube </i></a>
             </div>
+
+            <?php // nao funciona aqui em baixo ?>
+            <div id="avgrate">
+                <i class="fa-solid fa-star"></i>
+                <p class="nota"><?php echo $sqlmoviedata['movierate']?></p>
+            </div>
+        </div>
     </div>
 </body>
 </html>

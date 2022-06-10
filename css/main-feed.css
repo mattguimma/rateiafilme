@@ -1,6 +1,5 @@
 body{
     background-color: rgba(10, 10, 10);
-    height: 100vh;
 }
 
 /* conteúdo da página */
@@ -9,10 +8,11 @@ body{
     width: 100%;
     justify-content: center;
     align-items: center;
+    color:white;
 }
 
 #popularmovies{
-    padding: 33px 0;
+    padding: 23px 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -21,8 +21,8 @@ body{
 
 .popmtitle{
     text-transform: uppercase;
+    font-size: 1.6rem;
     letter-spacing: 1px;
-    align-items: center;
     color:white;
 }
 
@@ -31,16 +31,15 @@ body{
 #moviesgrid{
     display: grid;
     -ms-grid-row-align: center;
-    margin-top: 25px;
-    margin-left: 30px;
+    margin-top: 16px;
     justify-content: center;
     align-items: center;
-    grid: repeat(2, 250px) / auto-flow 185px;
+    grid: repeat(2, 233px) / auto-flow 156px;
 }
 
 .poster{
     background-color:#a80cb6;
-    border-radius: 5px;
+    border-radius: 2.5px;
     height: 225px;
-    width: 150px;
+    width: 157px;
 }

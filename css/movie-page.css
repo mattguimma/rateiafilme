@@ -12,11 +12,11 @@ body {
 }
 
 #sc-landing{
-    margin-left: 10%;
+    margin-left: 17%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     width: 90%;
-    margin-top: 20px;
+    margin-top: 3%;
 }
 
 #movie-info{
@@ -24,14 +24,14 @@ body {
 }
 
 .poster{
-    width: 380px;
-    height: 600px;
-    border-radius: 10px;
+    width: 352px;
+    height: 504px;
+    border-radius: 8px;
     background-color: brown;
 }
 
 #movie-info .title{
-    font-size: 3rem;
+    font-size: 2.3rem;
 }
 
 #movie-info .title,.year,.directedby{
@@ -65,4 +65,20 @@ body {
 #movie-info a{
     color: white;
     text-decoration: none;
+}
+
+#avgrate{
+    display:none;
+    position: fixed;
+    height: min-content;
+    align-items: center;
+    padding: 5px 20px;
+    border-radius: 40%;
+    background-color: #a80cb6;
+    margin-left: 35%;
+}
+
+#avgrate i{
+    align-items: center;
+    color:white;
 }

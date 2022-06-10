@@ -1,0 +1,21 @@
+body{
+    background-color: rgba(10, 10, 10);
+}
+
+#showcase{
+    display: flex;
+    justify-content: center;
+}
+    
+
+#searchlist{
+}
+
+#searchmovieobj{
+
+}
+
+.searchtitle{
+    color:white;
+    margin-top: 20px;
+}
