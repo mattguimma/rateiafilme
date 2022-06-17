@@ -44,33 +44,76 @@
         </div>
     </navbar>
 
-    <div id="showcase">
-        <div id="popularmovies">
-            <h1 class="popmtitle">Filmes mais populares</h1>
+    <h1 class="popmtitle">Filmes para você</h1>
+    <div id="popularmovies">
+        <div id="movieslistcontent">
+            <button class="btleft" onclick="scrollHorizontal(1)"><i class="fa-solid fa-chevron-left"></i></button>    
+            <button class="btright" onclick="scrollHorizontal(-1)"><i class="fa-solid fa-chevron-right"></i></button>
+            
             <div id="moviesgrid">
                 <?php
                     $query = "SELECT * FROM moviedata LIMIT 12";
                     $v_exit = mysqli_query($conn, $query);
-
                     $i = 1;
-
                     while($rowmovie = mysqli_fetch_assoc($v_exit)){
-                        echo "<a class='linkmovie". $i ."' href='movie.php?id=$rowmovie[id]'><div class='poster". $rowmovie['id'] ."'>";
-                        echo "<style> .poster". $rowmovie['id'] ."{ 
+                        echo "<a class='linkmovie". $i ."' href='movie.php?id=$rowmovie[id]'>";
+                        echo "<style> .linkmovie". $i ."
+                            { 
                                 background-image: url(". $rowmovie['moviepostercss'] .");
                                 background-size: cover;
-                                margin-right: 30px;
+                                margin: 0 5px;
                                 border-radius: 2.5px;
                                 cursor: pointer;
-                                height: 225px;
-                                width: 150px;
-                            } </style>";
+                                min-height: 351px;
+                                min-width: 236px;
+                            }
+                            </style>";
 
                             $i++;
-                        echo "</div></a>";
-                    }
+                            echo "</a>";
+                        }
                 ?>
+
+                <script>
+                    let curScrollPos = 0;
+                    let scrollAmount = 390;
+
+                    const sConst = document.querySelector("#moviesgrid");
+                    const hScroll = document.querySelector("#movieslistcontent");
+                    const btnLeft = document.querySelector(".btleft");
+                    const btnRight = document.querySelector(".btright");
+
+                    btnLeft.style.opacity = "0";
+
+                    let maxScroll = -sConst.clientWidth +  hScroll.clientWidth;
+
+                    function scrollHorizontal(val){
+                        curScrollPos += (val * scrollAmount);
+
+                        if(curScrollPos >= 0){
+                            curScrollPos = 0;
+                            btnLeft.style.opacity = "0";
+                            btnLeft.style.visibility = "hidden";
+                        }
+                        else{
+                            btnLeft.style.opacity = "1";
+                            btnLeft.style.visibility = "visible";
+                        }
+
+                        if(curScrollPos <= maxScroll){
+                            curScrollPos = maxScroll;
+                            btnRight.style.opacity = "0";
+                            btnRight.style.visibility = "hidden";
+                        }
+                        else{
+                            btnRight.style.opacity = "1";
+                            btnRight.style.visibility = "visible";
+                        }
+
+                        sConst.style.left = curScrollPos + "px";
+                    }
+                </script>
             </div>
-        </div>    
+        </div>
     </div>
 </body>

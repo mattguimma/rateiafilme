@@ -1,15 +1,24 @@
 <?php session_start();
     
+    include_once("./scripts/tmdbapi.php");
+
     if(!isset($_SESSION['username'])){
         header("Location: index.php");
     }
     
-    $apikey = "dde274716fc84e69d97751f654a169c7";
-    $unmod_query = $_GET['searchquery'];
-    $query = str_replace(" ", "+", $unmod_query);
+    $nowpage = null;
 
-    $tmdbapi = "http://api.themoviedb.org/3/search/movie?query={$query}&api_key={$apikey}&language=pt-BR";
-    $json = file_get_contents($tmdbapi);
+    if(!isset($_GET['numpage'])){
+        $nowpage = 1;
+    }else{
+        $nowpage = $_GET['numpage'];
+    }
+
+    $raw_query = $_GET['searchquery'];
+    $query = str_replace(" ", "+", $raw_query);
+
+    $searchrequest = $apilink . "search/movie?query={$query}&api_key={$apikey}&language=pt-BR&page={$nowpage}&page={$nowpage}";
+    $json = file_get_contents($searchrequest);
     $fetchresults = json_decode($json);
 
 ?>
@@ -24,7 +33,7 @@
     <link rel="stylesheet" href="./css/search.css">
     <link rel="stylesheet" href="./css/overall.css">
     <script src="https://kit.fontawesome.com/005aefdac6.js" crossorigin="anonymous"></script>
-    <title>Rateia Filme - Registrar filme</title>
+    <title>Rateia Filme</title>
 </head>
 <body>
     <navbar id="navbar">
@@ -40,9 +49,6 @@
                 </div> 
 
                 <div id="userarea">
-                    <!-- <a href="write-review.php"><i class="fa-solid fa-pen-circle"></i></a>
-                    <a href="register-movie.php"><i class="fa-solid fa-circle-plus"></i></a>
-                    <a href="./scripts/logoff.php"><i class="fa-solid fa-circle-xmark"></i></a> -->
                     <span class="username"><?php echo $_SESSION['username']?></span>                        
                     <img src="<?php echo $_SESSION['userpic']?>" alt="" class="userimage">
                 </div>
@@ -52,19 +58,58 @@
 
     <div id="showcase">
         <div id="searchlist">
-            <div id="searchmovieobj">
-                <h3 class="searchtitle">Encontramos X resultados com a palavra ATUMALACA.</h3>
+            <h3 class="searchtitle">Encontramos X resultados com o termo <?php echo strtoupper($raw_query) ?>.</h3>
+
                 <?php
                     foreach($fetchresults -> results as $mv_res) {
-                        echo "<style> h4{ color:white; }</style>";
+                        $posterpath = "";
+                        
+                        if($mv_res -> poster_path != null){
+                            $posterpath = "https://image.tmdb.org/t/p/w185/{$mv_res -> poster_path}";
+                        }
+                        else{
+                            $posterpath = "./images/posternull.png";
+                        }
 
-                        echo "<img src='https://image.tmdb.org/t/p/w185/".$mv_res -> poster_path."' alt=''>";
-                        echo "<h4 color:'white'>".$mv_res -> title."</h4>";
-                        echo "<h6 color:'white'>".$mv_res -> original_title."</h6>";
-                        echo "<hr>";
+                        echo "
+                        <div id='searchmovieobj'>
+                            <img class='movieposter' src='{$posterpath}'>
+                            
+                            <div class='movietitles'>
+                                <h2>".$mv_res -> title."</h2>
+                                <p>".$mv_res -> original_title."</p>
+                            </div>
+                        
+                        </div> <hr>
+                        ";
                     }
+
+                    if($fetchresults -> page == $fetchresults -> total_pages){
+                        echo "<style>
+                            .nextpage-btn{
+                                visibility: hidden;
+                            }
+                            </style>";
+                    }
+                    if($fetchresults -> page == 1){
+                        echo "<style>
+                            .prevpage-btn{
+                                visibility: hidden;
+                            }
+                            </style>";
+                    }
+
+                    $prevpage = $fetchresults -> page - 1;
+                    $nextpage = $fetchresults -> page + 1;
+
+                    echo "
+                    <div id='pageind'>
+                        <a class='prevpage-btn' href='search.php?searchquery={$raw_query}&numpage={$prevpage}'><i class='fa-solid fa-circle-left'></i></a>
+                        <p>Página {$fetchresults -> page} de {$fetchresults -> total_pages}<p> 
+                        <a class='nextpage-btn' href='search.php?searchquery={$raw_query}&numpage={$nextpage}'><i class='fa-solid fa-circle-right'></i></a>
+                    </div>";
+
                 ?>
-            </div>
         </div>
     </div>
 </body>

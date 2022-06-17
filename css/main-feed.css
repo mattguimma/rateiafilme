@@ -2,44 +2,65 @@ body{
     background-color: rgba(10, 10, 10);
 }
 
-/* conteúdo da página */
-
-#showcase {
-    width: 100%;
-    justify-content: center;
-    align-items: center;
+.popmtitle{
+    font-size: 1.8rem;
     color:white;
+    margin: 30px 0px 0px 10.5vw;
 }
 
 #popularmovies{
-    padding: 23px 0;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.popmtitle{
-    text-transform: uppercase;
-    font-size: 1.6rem;
-    letter-spacing: 1px;
+#movieslistcontent{
+    display: flex;
+    margin: 15px;
+    height: 371px;
+    width: 80vw;
+    flex-direction: row;
+    justify-content: space-between;
+    overflow: hidden;
+    position: relative;
+}
+
+#movieslistcontent i{
+    font-size: 1.8rem;
+    color: black;
+}
+
+#movieslistcontent button{
+    background-color: white;
+    box-shadow: 0 0 10px #000000;
+    z-index: 1;
+    height: min-content;
+    margin: 150px 15px;
+    padding: 10px 16px 10px 16px;
+    border: 0;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 350ms;
+}
+
+#movieslistcontent button:hover{
+    background-color: #c20cd3;
+}
+
+#movieslistcontent button:hover i{
     color:white;
 }
 
-/* lista de filmes (teste) */
+.btnleft{
+    visibility: hidden;
+}
 
 #moviesgrid{
-    display: grid;
-    -ms-grid-row-align: center;
-    margin-top: 16px;
-    justify-content: center;
+    display: flex;
+    justify-content: flex-start;
+    position: absolute;
+    left: 0;
     align-items: center;
-    grid: repeat(2, 233px) / auto-flow 156px;
+    transition: all 500ms ease-out;
 }
 
-.poster{
-    background-color:#a80cb6;
-    border-radius: 2.5px;
-    height: 225px;
-    width: 157px;
-}

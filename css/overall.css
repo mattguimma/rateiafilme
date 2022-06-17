@@ -62,8 +62,8 @@ body {
 #searchquery{
     color:white;
     font-family: 'Poppins', sans-serif;
-    padding: 8px 15px;
-    border-radius: 8px;
+    padding: 8px 13px;
+    border-radius: 8px 0 0 8px;
     background: #2e2e2e;
     border: 1px solid #040b1800;
     outline: none;
